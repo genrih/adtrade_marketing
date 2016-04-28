@@ -1,0 +1,45 @@
+  [1m[36m (8.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (7.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateAdtradeMarketingUsers (20160427143839)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "adtrade_marketing_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar, "html_url" varchar, "name" varchar, "company" varchar, "blog" varchar, "location" varchar, "email" varchar, "public_repos" varchar, "followers" varchar, "created_at" datetime NOT NULL, "bio" text, "source" varchar, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160427143839"]]
+  [1m[35m (14.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "adtrade_marketing_users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2016-04-27 15:33:41.042288"], ["updated_at", "2016-04-27 15:33:41.042288"]]
+  [1m[36m (7.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "adtrade_marketing_users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2016-04-27 15:33:49.269243"], ["updated_at", "2016-04-27 15:33:49.269243"]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "adtrade_marketing_users" ("login", "html_url", "name", "blog", "location", "email", "public_repos", "followers", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["login", "FlexMonkey"], ["html_url", "https://github.com/FlexMonkey"], ["name", "simon gladman"], ["blog", "http://flexmonkey.blogspot.com"], ["location", "London, United Kingdom"], ["email", "sgladman@gmail.com"], ["public_repos", "95"], ["followers", "468"], ["created_at", "2013-12-19 08:52:10.000000"], ["updated_at", "2016-04-27 15:34:06.818908"]]
+  [1m[36m (6.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mAdtradeMarketing::User Load (0.3ms)[0m  SELECT  "adtrade_marketing_users".* FROM "adtrade_marketing_users"  ORDER BY "adtrade_marketing_users"."id" DESC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "adtrade_marketing_users" ("login", "html_url", "name", "blog", "location", "email", "public_repos", "followers", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["login", "FlexMonkey"], ["html_url", "https://github.com/FlexMonkey"], ["name", "simon gladman"], ["blog", "http://flexmonkey.blogspot.com"], ["location", "London, United Kingdom"], ["email", "sgladman@gmail.com"], ["public_repos", "95"], ["followers", "468"], ["created_at", "2013-12-19 08:52:10.000000"], ["updated_at", "2016-04-27 15:34:13.357619"]]
+  [1m[36m (12.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mAdtradeMarketing::User Load (0.3ms)[0m  SELECT  "adtrade_marketing_users".* FROM "adtrade_marketing_users"  ORDER BY "adtrade_marketing_users"."id" DESC LIMIT 1
+  [1m[36mSQL (7.6ms)[0m  [1mDELETE FROM "adtrade_marketing_users"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "adtrade_marketing_users" ("login", "html_url", "name", "blog", "location", "email", "public_repos", "followers", "created_at", "source", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "FlexMonkey"], ["html_url", "https://github.com/FlexMonkey"], ["name", "simon gladman"], ["blog", "http://flexmonkey.blogspot.com"], ["location", "London, United Kingdom"], ["email", "sgladman@gmail.com"], ["public_repos", "95"], ["followers", "468"], ["created_at", "2013-12-19 08:52:10.000000"], ["source", "github"], ["updated_at", "2016-04-27 15:35:21.050126"]]
+  [1m[35m (11.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "adtrade_marketing_users" ("login", "html_url", "name", "location", "email", "public_repos", "followers", "created_at", "source", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["login", "saiwu-bigkoo"], ["html_url", "https://github.com/saiwu-bigkoo"], ["name", "sai"], ["location", "guangzhou"], ["email", "sai.wu@bigkoo.com"], ["public_repos", "15"], ["followers", "306"], ["created_at", "2014-11-25 09:35:18.000000"], ["source", "github"], ["updated_at", "2016-04-27 15:35:21.065683"]]
+  [1m[36m (7.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "adtrade_marketing_users" ("login", "html_url", "name", "blog", "location", "email", "public_repos", "followers", "created_at", "source", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "FlexMonkey"], ["html_url", "https://github.com/FlexMonkey"], ["name", "simon gladman"], ["blog", "http://flexmonkey.blogspot.com"], ["location", "London, United Kingdom"], ["email", "sgladman@gmail.com"], ["public_repos", "95"], ["followers", "468"], ["created_at", "2013-12-19 08:52:10.000000"], ["source", "github"], ["updated_at", "2016-04-27 15:35:21.074944"]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "adtrade_marketing_users" ("login", "html_url", "name", "location", "email", "public_repos", "followers", "created_at", "source", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["login", "saiwu-bigkoo"], ["html_url", "https://github.com/saiwu-bigkoo"], ["name", "sai"], ["location", "guangzhou"], ["email", "sai.wu@bigkoo.com"], ["public_repos", "15"], ["followers", "306"], ["created_at", "2014-11-25 09:35:18.000000"], ["source", "github"], ["updated_at", "2016-04-27 15:35:21.082743"]]
+  [1m[36m (6.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "adtrade_marketing_users" ("login", "html_url", "name", "blog", "location", "email", "public_repos", "followers", "created_at", "source", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["login", "FlexMonkey"], ["html_url", "https://github.com/FlexMonkey"], ["name", "simon gladman"], ["blog", "http://flexmonkey.blogspot.com"], ["location", "London, United Kingdom"], ["email", "sgladman@gmail.com"], ["public_repos", "95"], ["followers", "468"], ["created_at", "2013-12-19 08:52:10.000000"], ["source", "github"], ["updated_at", "2016-04-27 15:35:21.090876"]]
+  [1m[35m (9.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "adtrade_marketing_users" ("login", "html_url", "name", "location", "email", "public_repos", "followers", "created_at", "source", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["login", "saiwu-bigkoo"], ["html_url", "https://github.com/saiwu-bigkoo"], ["name", "sai"], ["location", "guangzhou"], ["email", "sai.wu@bigkoo.com"], ["public_repos", "15"], ["followers", "306"], ["created_at", "2014-11-25 09:35:18.000000"], ["source", "github"], ["updated_at", "2016-04-27 15:35:21.103396"]]
+  [1m[36m (13.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "adtrade_marketing_users"
+  [1m[36mAdtradeMarketing::User Load (0.6ms)[0m  [1mSELECT "adtrade_marketing_users".* FROM "adtrade_marketing_users"[0m
