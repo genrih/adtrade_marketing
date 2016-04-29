@@ -1,22 +1,27 @@
 module AdtradeMarketing
   class GithubParser
-
     def initialize(login: nil, password: nil)
       @github = (login && password) ? Github.new(basic_auth: "#{login}:#{password}") : Github.new
+      @login = login
+      @password = password
     end
 
     def get_users(pages: 10, start_page_num: 0, per_page: 30, language: 'swift', columns: [])
-      pages_processed = 0
-      user_fields = columns.empty? ? column_names : columns
-      src_users = make_users_query(per_page, language)
-      start_page = nil
+      begin
+        pages_processed = 0
+        user_fields = columns.empty? ? column_names : columns
+        src_users = make_users_query(per_page, language)
+        start_page = nil
 
-      while src_users.has_next_page?
-        start_page ||= src_users.page start_page_num
-        break if pages_processed == pages
-        process_page(start_page, user_fields)
-        start_page = start_page.next_page
-        pages_processed += 1
+        while src_users.has_next_page?
+          start_page ||= src_users.page start_page_num
+          break if pages_processed == pages
+          process_page(start_page, user_fields)
+          start_page = start_page.next_page
+          pages_processed += 1
+        end
+      rescue Github::Error::Forbidden => e
+        GithubWorker.perform_async(start_page_num + pages_processed, @login, @password, 30, language, pages)
       end
     end
 
